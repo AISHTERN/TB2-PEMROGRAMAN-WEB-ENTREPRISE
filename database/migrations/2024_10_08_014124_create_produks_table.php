@@ -8,12 +8,16 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->id('kode_produk');
-            $table->string('nama_produk')->nullable();
+            //Membuat struktur tabel produk
+            $table->string('nama_produk');
+            $table->text('deskripsi')->nullable();
             $table->integer('harga');
             $table->integer('jumlah_produk');
             $table->string('image')->nullable();
@@ -24,8 +28,10 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('produks');
     }
